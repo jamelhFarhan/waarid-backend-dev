@@ -1,0 +1,23 @@
+{% extends "account/email/base_message.txt" %}
+{% load account %}
+{% load i18n %}
+
+{% block content %}{% autoescape off %}{% user_display user as user_display %}
+Hello {{ user_display }}
+Thank you for choosing Waarid,
+{% if role == 1 %}
+Please use the link below to verify your account and start shipping. We are looking forward to helping you optimize your logistics. 
+
+{{ activate_url }}
+
+{% else %}
+You are one step away from offering your shipping services on {{ company_name }}, our team will review your account before activating, it usually takes up to 48 hours for you account to be activated. We will be notified by email.
+Please use the link below to verify your account.
+
+{{ activate_url }}
+
+If you have any questions or comments, contact our customer service at help@waarid.sa
+{% endif %}
+
+Team Waarid
+{% endautoescape %}{% endblock %}
